@@ -6,4 +6,9 @@ block content
   div.container-fluid 
     div.row 
         each item, index in results
-            div.col-sm-2 Application Name: #{item["App_Name"]} <br> Application Company: #{item["App_Company"]} <br> Application Size: #{item["App_Size"]} <br> Application Rating: #{item["App_Rating"]} <br> Application Category: #{item["App_Category"]}
+            div.col-sm-2(onclick=`buy(${index})`) Application Name: #{item["App_Name"]} <br> Application Company: #{item["App_Company"]} <br> Application Size: #{item["App_Size"]} <br> Application Rating: #{item["App_Rating"]} <br> Application Category: #{item["App_Category"]}
+
+  script.
+    function buy(index) {
+      alert("You purchased item " + index)
+    }
