@@ -2,8 +2,8 @@ extends layout
 
 block content
   h1= title
-  - var results = [{"App_Name": "WhatsApp", "App_Company": "META", "App_Size": 150.8, "App_Rating": 4.7},{"App_Name": "LinkedIn", "App_Company": "LinkedIn Corporation", "App_Size": 301.6, "App_Rating": 4.2},{"App_Name": "Canvas Student", "App_Company": "Instructure Inc.", "App_Size": 113.1, "App_Rating": 4.7}]
+  - var results = [{"App_Name": "WhatsApp", "App_Company": "META", "App_Size": 150.8, "App_Rating": 4.7,"App_Category":"Communication"},{"App_Name": "LinkedIn", "App_Company": "LinkedIn Corporation", "App_Size": 301.6, "App_Rating": 4.2,"App_Category":"Social"},{"App_Name": "Canvas Student", "App_Company": "Instructure Inc.", "App_Size": 113.1, "App_Rating": 4.7,"App_Category":"Education"}]
   div.container-fluid 
     div.row 
         each item, index in results
-            div.col-sm-2 Application Name: #{item["App_Name"]} <br> Application Company: #{item["App_Company"]} <br> Application Size: #{item["App_Size"]} <br> Application Rating: #{item["App_Rating"]}
+            div.col-sm-2 Application Name: #{item["App_Name"]} <br> Application Company: #{item["App_Company"]} <br> Application Size: #{item["App_Size"]} <br> Application Rating: #{item["App_Rating"]} <br> Application Category: #{item["App_Category"]}
