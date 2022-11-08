@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-  - var results = [{"App_Name": "WhatsApp", "App_Company": "META", "App_Size": 150.8, "App_Rating": 4.7,"App_Category":"Communication"},{"App_Name": "LinkedIn", "App_Company": "LinkedIn Corporation", "App_Size": 301.6, "App_Rating": 4.2,"App_Category":"Social"},{"App_Name": "Canvas Student", "App_Company": "Instructure Inc.", "App_Size": 113.1, "App_Rating": 4.7,"App_Category":"Education"}]
+  - var results = App_Results
   div.container-fluid 
     div.row 
         each item, index in results
