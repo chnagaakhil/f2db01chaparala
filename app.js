@@ -83,6 +83,12 @@ async function recreateDB() {
     "App_Size": 113.1, "App_Rating": 4.7,
     "App_Category":"Education"
   });
+  let instance4 = new
+    Application({"App_Name": "Zoom", 
+    "App_Company": "Zoom Video Communications, Inc.", 
+    "App_Size": 159.2, "App_Rating": 4.6,
+    "App_Category":"Business"
+  });
   instance1.save(function (err, doc) {
     if (err) return console.error(err);
     console.log("First Application saved")
@@ -92,6 +98,10 @@ async function recreateDB() {
     console.log("Second Application saved")
   });
   instance3.save(function (err, doc) {
+    if (err) return console.error(err);
+    console.log("Fourth Application saved")
+  });
+  instance4.save(function (err, doc) {
     if (err) return console.error(err);
     console.log("Third Application saved")
   });

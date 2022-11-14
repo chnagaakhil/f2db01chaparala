@@ -85,3 +85,16 @@ exports.Application_update_put = async function(req, res) {
         res.send(`{"error": ${err}: Update for id ${req.params.id} failed`); 
     } 
 }; 
+
+// Handle Application delete on DELETE. 
+exports.Application_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await Application.findByIdAndDelete(req.params.id) 
+        console.log("Application Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+}; 
