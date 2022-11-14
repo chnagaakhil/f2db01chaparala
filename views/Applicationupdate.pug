@@ -1,0 +1,51 @@
+extends layout 
+ 
+block content 
+  h1= title 
+ 
+  - let Applicationid = toShow._id 
+  - let App_Name = toShow.App_Name 
+  - let App_Company = toShow.App_Company 
+  - let App_Size = toShow.App_Size 
+  - let App_Rating = toShow.App_Rating 
+  - let App_Category = toShow.App_Category  
+   
+  div.row(class='mb-2') 
+    div.mr-1 ID is 
+    div #{Applicationid} 
+  - let actionid = "/resource/Application/" + Applicationid 
+  form(id='ApplicationForm', action= actionid, method="PUT") 
+    div.form-group 
+        label.ApplicationAttr(for='App_Name') Application Name 
+        input#App_Name(type='text', name='App_Name' value = App_Name) 
+    div.form-group 
+        label.ApplicationAttr(for='App_Company') Application Company 
+        input#App_Company(type='text', name='App_Company' value = App_Company) 
+    div.form-group 
+        label.ApplicationAttr(for='App_Size') Application Size 
+        input#App_Size(type='number', name='App_Size' value = App_Size) 
+    div.form-group 
+        label.ApplicationAttr(for='App_Rating') Application Rating 
+        input#App_Rating(type='number', name='App_Rating' value = App_Rating) 
+    div.form-group 
+        label.ApplicationAttr(for='App_Category') Application Category 
+        input#App_Category(type='text', name='App_Category' value = App_Category) 
+    input(type="submit") 
+ 
+  script. 
+    document.forms['ApplicationForm'].addEventListener('submit', (event) => { 
+      event.preventDefault(); 
+      // TODO do something here to show user that form is being submitted 
+      fetch(event.target.action, { 
+        method: 'PUT', 
+        body: new URLSearchParams(new FormData(event.target)) // event.target is the form 
+      }).then((resp) => { 
+        return resp.json(); // or resp.text() or whatever the server sends 
+      }).then((body) => { 
+        alert("Update succeded") 
+        // TODO handle body 
+      }).catch((error) => { 
+        // TODO handle error 
+        alert("Update failed " + error ) 
+      }); 
+    }); 

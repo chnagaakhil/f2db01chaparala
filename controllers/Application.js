@@ -126,3 +126,18 @@ exports.Application_create_Page = function (req, res) {
         res.send(`{'error': '${err}'}`);
     }
 }; 
+
+// Handle building the view for updating a Application. 
+// query provides the id 
+exports.Application_update_Page =  async function(req, res) { 
+    console.log("update view for item "+req.query.id) 
+    try{ 
+        let result = await Application.findById(req.query.id) 
+        res.render('Applicationupdate', { title: 'Application Update', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+}; 
+ 
