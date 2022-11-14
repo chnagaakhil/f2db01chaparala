@@ -1,7 +1,7 @@
 extends layout 
  
 block content 
-  h1= title 
+  h1(class = 'container-fluid p-5 bg-success text-warning text-center')= title 
   
   if (toShow == null) 
     h2 No instance to delete 
@@ -13,27 +13,31 @@ block content
     - let App_Rating = toShow.App_Rating 
     - let App_Category = toShow.App_Category  
    
-    div.row(class='mb-2') 
-        div.mr-1 ID is 
-        div #{Applicationid} 
+    div.row(class='d-flex justify-content-center p-2 bg-light text-center text-danger') 
+        div.mr-1(class = "p-2 flex-fill") Application ID is #{Applicationid} 
     - let actionid = "/resource/Application/" + Applicationid 
-    form(id='ApplicationForm', action= actionid, method="PUT") 
+    form(id='ApplicationForm',class='justify-content-center p-2 bg-light text-center text-dark',action= actionid, method="PUT") 
         div.form-group 
-            label.ApplicationAttr(for='App_Name') Application Name 
-            input#App_Name(type='text', name='App_Name' value = App_Name) 
+            label.ApplicationAttr(for='App_Name' style="margin-right: 5px;") Application Name 
+            input#App_Name(type='text', name='App_Name' value = App_Name style="width:500px;") 
+        br
         div.form-group 
-            label.ApplicationAttr(for='App_Company') Application Company 
-            input#App_Company(type='text', name='App_Company' value = App_Company) 
+            label.ApplicationAttr(for='App_Company' style="margin-right: 5px;") Application Company 
+            input#App_Company(type='text', name='App_Company' value = App_Company style="width:500px;") 
+        br
         div.form-group 
-            label.ApplicationAttr(for='App_Size') Application Size 
-            input#App_Size(type='number', name='App_Size' value = App_Size) 
+            label.ApplicationAttr(for='App_Size' style="margin-right: 5px;") Application Size 
+            input#App_Size(type='number', name='App_Size' value = App_Size style="width:500px;") 
+        br
         div.form-group 
-            label.ApplicationAttr(for='App_Rating') Application Rating 
-            input#App_Rating(type='number', name='App_Rating' value = App_Rating) 
+            label.ApplicationAttr(for='App_Rating' style="margin-right: 5px;") Application Rating 
+            input#App_Rating(type='number', name='App_Rating' value = App_Rating style="width:500px;") 
+        br
         div.form-group 
-            label.ApplicationAttr(for='App_Category') Application Category 
-            input#App_Category(type='text', name='App_Category' value = App_Category) 
-        input(type="submit") 
+            label.ApplicationAttr(for='App_Category' style="margin-right: 5px;") Application Category 
+            input#App_Category(type='text', name='App_Category' value = App_Category style="width:500px;") 
+        br
+        input(class="btn btn-success" type="submit") 
  
   script. 
     document.forms['ApplicationForm'].addEventListener('submit', (event) => { 

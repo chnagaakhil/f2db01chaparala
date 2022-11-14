@@ -7,6 +7,11 @@ a {
   color: #00B7FF;
 }
 .ApplicationAttr { 
-  background-color: aquamarine; 
+  text-align:center;
+  background-color:#0088ff; 
   width: 120px; 
 } 
+.mr-1 {
+  background-color:darkslategray;
+  width: 120px;
+}

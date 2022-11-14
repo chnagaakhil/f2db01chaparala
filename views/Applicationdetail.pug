@@ -1,7 +1,7 @@
 extends layout 
  
 block content 
-  h1= title 
+  h1(class = 'container-fluid p-5 bg-success text-warning text-center')= title 
  
   if (toShow == null) 
     h2 No instance to delete 
@@ -12,22 +12,22 @@ block content
     - let App_Size = toShow.App_Size 
     - let App_Rating = toShow.App_Rating 
     - let App_Category = toShow.App_Category 
-    div 
+    div(class='justify-content-center p-2 text-center text-dark',style='background-color:#d0ff00')
       div.row 
-        div(class='ApplicationAttr mr-3') Application ID is: 
+        div(class='p-2 flex-fill ApplicationAttr mr-3') Application ID is: 
         div #{Applicationid} 
       div.row 
-        div(class='ApplicationAttr mr-3') Application Name is: 
+        div(class='p-2 flex-fill ApplicationAttr mr-3') Application Name is: 
         div #{App_Name} 
       div.row 
-        div(class='ApplicationAttr mr-3') Application Company is: 
+        div(class='p-2 flex-fill ApplicationAttr mr-3') Application Company is: 
         div #{App_Company} 
       div.row 
-        div(class='ApplicationAttr mr-3') Application Size is: 
+        div(class='p-2 flex-fill ApplicationAttr mr-3') Application Size is: 
         div #{App_Size} 
       div.row 
-        div(class='ApplicationAttr mr-3') Application Rating is: 
+        div(class='p-2 flex-fill ApplicationAttr mr-3') Application Rating is: 
         div #{App_Rating} 
       div.row 
-        div(class='ApplicationAttr mr-3') Application Category is: 
+        div(class='p-2 flex-fill ApplicationAttr mr-3') Application Category is: 
         div #{App_Category} 
