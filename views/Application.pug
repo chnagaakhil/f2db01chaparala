@@ -3,12 +3,18 @@ extends layout
 block content
   h1= title
   - var results = App_Results
-  div.container-fluid 
-    div.row 
+  div(class="container-fluid") 
+    div(class="row m-1")
         each item, index in results
-            div.col-sm-2(onclick=`buy(${index})`) Application Name: #{item["App_Name"]} <br> Application Company: #{item["App_Company"]} <br> Application Size: #{item["App_Size"]} <br> Application Rating: #{item["App_Rating"]} <br> Application Category: #{item["App_Category"]}
+            - let destination = `dispatch(\"/Application/update?id=${item._id}\")` 
+            div(class="row-sm-2", class="m-1")(onclick=`buy(${index})`) Application Name: #{item["App_Name"]} <br> Application Company: #{item["App_Company"]} <br> Application Size: #{item["App_Size"]} <br> Application Rating: #{item["App_Rating"]} <br> Application Category: #{item["App_Category"]}
+            button.btn(class="btn-primary ml-1",style="width:500px" onclick= destination) Update 
 
   script.
     function buy(index) {
       alert("You purchased item " + index)
     }
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
