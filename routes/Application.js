@@ -15,8 +15,8 @@ const secured = (req, res, next) => {
 /* GET home page. */
 router.get('/', Application_controlers.Application_view_all_Page);
 router.get('/detail', Application_controlers.Application_view_one_Page);
-router.get('/create', Application_controlers.Application_create_Page);
+router.get('/create', secured, Application_controlers.Application_create_Page);
 router.get('/update', secured, Application_controlers.Application_update_Page);
-router.get('/delete', Application_controlers.Application_delete_Page);
+router.get('/delete', secured, Application_controlers.Application_delete_Page);
 
 module.exports = router;
