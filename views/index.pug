@@ -2,16 +2,24 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
-  p This is Assignment 11 of 44-563-Web-Apps-F22
-  button(type="button", class="btn btn-success" onclick = "doBump()") Press Here
-  div#bump Bump the count
+  p Welcome to #{title} 
+  if (!user) 
+    a(href="/login") Login 
+    br 
+    a(href="/register") Register 
+  if (user) 
+    p You are currently logged in as #{user.username} 
+    a(href="/Application") Take me to Applications 
+    br 
+    a(href="/logout") Logout 
+  //- button(type="button", class="btn btn-success" onclick = "doBump()") Press Here
+  //- div#bump Bump the count
 
-  script.  
-    var count = 0
-    var bump = 1
-    function doBump() {
-      count = count + bump 
-      bump = bump + 1
-      document.getElementById("bump").innerHTML = "Count "+ count +" Bump "+bump;
-    }
+  //- script.  
+  //-   var count = 0
+  //-   var bump = 1
+  //-   function doBump() {
+  //-     count = count + bump 
+  //-     bump = bump + 1
+  //-     document.getElementById("bump").innerHTML = "Count "+ count +" Bump "+bump;
+  //-   }
