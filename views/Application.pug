@@ -1,20 +1,39 @@
 extends layout
 
 block content
-  h1= title
-  - var results = App_Results
-  div(class="container-fluid") 
-    div(class="row m-1")
-        each item, index in results
-            - let destination = `dispatch(\"/Application/update?id=${item._id}\")` 
-            div(class="row-sm-2", class="m-1")(onclick=`buy(${index})`) Application Name: #{item["App_Name"]} <br> Application Company: #{item["App_Company"]} <br> Application Size: #{item["App_Size"]} <br> Application Rating: #{item["App_Rating"]} <br> Application Category: #{item["App_Category"]}
-            button.btn(class="btn-primary ml-1",style="width:500px" onclick= destination) Update 
+  div(class='container' style="text-align: center;")
+        h1(class = 'container-fluid p-5 bg-success text-warning text-center')= title
+        button.btn(class="btn-primary btn-sm ml-1", style="margin: 5px; width: 120px;", onclick=`dispatch(\"/Application/create\")`) Create
+        - var results = App_Results
+        div(class="container-fluid" style="text-align: center;") 
+          div(class="row m-1")
+              each item, index in results
+                  div(class='col-md')
+                            div(class='card', style='width: 18rem; color:black; background:lightgrey')
+                                div(class='card-body')
+                                  div(class="card-text", onclick=`buy(${index})`) Application Name: #{item["App_Name"]} <br> Application Company: #{item["App_Company"]} <br> Application Size: #{item["App_Size"]} <br> Application Rating: #{item["App_Rating"]} <br> Application Category: #{item["App_Category"]}
+                                  button.btn(class="btn-success btn-sm ml-1", style="margin: 5px; width: 120px;", onclick=`dispatch(\"/Application/detail?id=${item._id}\")`) View
+                                  button.btn(class="btn-warning btn-sm ml-1", style="margin: 5px; width: 120px;", onclick= `dispatch(\"/Application/update?id=${item._id}\")`) Update
+                                  button.btn(class="btn-danger btn-sm ml-1", style="margin: 5px; width: 120px;", onclick= `dispatch(\"/Application/delete?id=${item._id}\")`) Delete
 
   script.
     function buy(index) {
-      alert("You purchased item " + index)
+      alert("You purchased item " + index);
     }
-  script. 
+
     function dispatch(path){ 
-      window.location.href=path 
+      window.location.href = path; 
     } 
+
+    passport.use(new LocalStrategy(function(username, password, done) { 
+            Account.findOne({ username: username }, function (err, user) { 
+            if (err) { return done(err); } 
+            if (!user) { 
+                return done(null, false, { message: 'Incorrect username.' }); 
+            }
+            if (!user.validPassword(password)) { 
+                return done(null, false, { message: 'Incorrect password.' }); 
+            }
+            return done(null, user); 
+          }); 
+      }));
